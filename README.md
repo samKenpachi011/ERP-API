@@ -10,6 +10,10 @@ s
 
 ## Project Management
 
+1. ### Test Driven Development
+- A development practice to write tests for functionalities before implementation
+- Example -> /app/sample_cal_test.py has base calculator functions that are documented and the test class in /app/tests.py inherits from the SimpleTestCase classs
+
 ## GitHub Actions
 ### Used to run automated tasks for pushes to the repository
 **Use Cases**
