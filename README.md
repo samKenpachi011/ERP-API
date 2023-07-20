@@ -6,6 +6,23 @@
 
 s
 ## Project Structure
+- app -> holds all application code
+- app/core -> holds all shared code across multiple applications
+- app/users -> holds all user related code
+
+**Core App Structure**
+- app/core/tests/
+- app/core/models
+- app/core/admin
+- app/core/apps
+- app/core/migrations
+
+**User App Structure**
+- app/users/tests/
+- app/users/serializers
+- app/users/view
+- app/users/urls
+- app/users/admin
 
 
 ## Project Management
