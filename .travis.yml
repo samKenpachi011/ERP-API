@@ -1,0 +1,25 @@
+
+# Build environment configuration
+os: linux
+dist: focal
+language: python
+python: 3.9
+
+# Only run installations from the dev branch
+branches:
+  only:
+    - dev
+
+# Installing dependencies
+
+# Define the build stages and jobs
+stages:
+  - test
+
+jobs:
+  include:
+    - stage: test
+      name: Test and Lint
+      script:
+        - docker-compose run --rm app sh -c "python manage.py test"
+        - docker-compose run --rm app sh -c "flake8"
