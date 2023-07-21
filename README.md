@@ -24,6 +24,15 @@ s
 - app/users/urls
 - app/users/admin
 
+### Database Configuration
+- the docker compose configuration add a db service that uses the postgresql database and dev volume
+- environment variables are also set for the db on the main service and the db service
+**Fixing race condition**
+- in core/app/management/commands/ there is a wait_for_postgres_db file to check on the database status
+-running the command-> `docker-compose run --rm app sh -c "python manage.py wait_for_postgres_db"`
+
+
+
 
 ## Project Management
 
