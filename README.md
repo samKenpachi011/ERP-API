@@ -40,6 +40,28 @@ s
 - A development practice to write tests for functionalities before implementation
 - Example -> /app/sample_cal_test.py has base calculator functions that are documented and the test class in /app/tests.py inherits from the SimpleTestCase classs
 
+2. ### Pre-Installs/Configuration
+    - Vs-Code / any IDE
+    - GIT
+    - Set up Docker and Docker-Compose
+    - Setup linting
+    - Configure Github actions
+<br/>
+
+3. ### Documentation
+**Developers or any user of our APIs needs to know how to use them.**
+- **Documentation is both Manual and Automatic(endpoints) -> tools**
+    - [DRF Spectacular](https://drf-spectacular.readthedocs.io/en/latest/)
+    - [DRF Spectacular benefits](https://levelup.gitconnected.com/drf-spectacular-the-ultimate-tool-for-automated-drf-api-documentation-61bd4cca36b7)
+    - [Schemas](https://www.django-rest-framework.org/api-guide/schemas/)
+
+- **What we have documented**
+    - Available endpoints
+    - Application docker configurations
+    - Authentication process
+    - Endpoint payloads and responses
+
+
 ## GitHub Actions
 ### Used to run automated tasks for pushes to the repository
 **Use Cases**
