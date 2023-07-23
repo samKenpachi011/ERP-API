@@ -10,6 +10,7 @@ from rest_framework import status
 from core.helpers import create_user
 
 CREATE_USER_API = reverse('user:create')
+TOKEN_URL = reverse('user:token')
 
 
 class PublicUserApiTests(TestCase):
@@ -67,3 +68,68 @@ class PublicUserApiTests(TestCase):
             email=payload['email']).exists()
 
         self.assertFalse(user_exists)
+
+    def test_create_token(self):
+        """Test create token"""
+
+        payload = {
+            'email': 'testuser@example.com',
+            'password': 'password123',
+            'name': 'Test Name',
+        }
+
+        create_user(**payload)
+
+        token_payload = {
+            'email': payload['email'],
+            'password': payload['password'],
+        }
+
+        res = self.client.post(TOKEN_URL, token_payload)
+
+        self.assertIn('token', res.data)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+
+    def test_create_token_bad_credentials(self):
+        """Test token bad credentials"""
+        payload = {
+            'email': 'testuser@example.com',
+            'password': 'password123',
+            'name': 'Test Name',
+        }
+
+        create_user(**payload)
+
+        token_payload = {
+            'email': 'testuser@example.com',
+            'password': '123password',
+        }
+
+        res = self.client.post(TOKEN_URL, token_payload)
+
+        self.assertNotIn('token', res.data)
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_create_token_email_not_found(self):
+        """Test create token without email"""
+        token_payload = {
+            'email': 'testuser10@example.com',
+            'password': 'password123',
+        }
+
+        res = self.client.post(TOKEN_URL, token_payload)
+
+        self.assertNotIn('token', res.data)
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_create_token_blank_password(self):
+        """Test blank password error"""
+        token_payload = {
+            'email': 'testuser@example.com',
+            'password': '',
+        }
+
+        res = self.client.post(TOKEN_URL, token_payload)
+
+        self.assertNotIn('token', res.data)
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
