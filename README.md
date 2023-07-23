@@ -4,7 +4,7 @@
 
 ## Technologies
 
-s
+
 ## Project Structure
 - app -> holds all application code
 - app/core -> holds all shared code across multiple applications
@@ -23,6 +23,15 @@ s
 - app/users/view
 - app/users/urls
 - app/users/admin
+
+1. ### User App endpoints
+
+2. ### User App authentication
+**Authentication method -> Token Authentication**
+- [Token Authentication](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication)
+- Helps avoid using email and password authentication on each request
+
+
 
 ### Database Configuration
 - the docker compose configuration add a db service that uses the postgresql database and dev volume
