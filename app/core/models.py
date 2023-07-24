@@ -36,4 +36,4 @@ class Department(models.Model):
         return (self.hod, self.dept_name)
 
     def __str__(self) -> str:
-        return f'{self.dept_name}'
+        return self.dept_name
