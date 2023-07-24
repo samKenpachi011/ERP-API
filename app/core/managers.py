@@ -1,4 +1,5 @@
 from django.contrib.auth.base_user import BaseUserManager
+from django.db import models
 
 
 class UserManager(BaseUserManager):
@@ -22,3 +23,12 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
 
         return user
+
+
+# Department Manager
+
+class DepartmentManager(models.Manager):
+    """Manager for departments"""
+
+    def get_by_natural_key(self, hod, dept_name):
+        return self.get(hod=hod, dept_name=dept_name)

@@ -1,6 +1,7 @@
 """Tests for models"""
 from django.test import TestCase
 from core.helpers import create_user, get_user_model
+from core import models
 
 
 class ModelTests(TestCase):
@@ -44,3 +45,15 @@ class ModelTests(TestCase):
 
         self.assertTrue(user.is_staff)
         self.assertTrue(user.is_superuser)
+
+# Department model test
+    def test_create_department(self):
+        """Test creating a department success"""
+
+        department = models.Department.objects.create(
+            dept_name='Test department',
+            hod='Test Head of Department',
+            description='Test department description'
+        )
+
+        self.assertEqual(str(department), department.dept_name)

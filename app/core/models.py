@@ -6,7 +6,7 @@ from django.contrib.auth.models import (
     AbstractBaseUser,
     PermissionsMixin,
 )
-from .managers import UserManager
+from .managers import UserManager, DepartmentManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -22,3 +22,18 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self) -> str:
         return self.email
+
+
+class Department(models.Model):
+    """Department model"""
+    dept_name = models.CharField(max_length=255)
+    hod = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField(max_length=500, blank=True, null=True)
+
+    objects = DepartmentManager()
+
+    def natural_key(self):
+        return (self.hod, self.dept_name)
+
+    def __str__(self) -> str:
+        return self.dept_name
