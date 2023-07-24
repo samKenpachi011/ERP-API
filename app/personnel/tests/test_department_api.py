@@ -5,17 +5,17 @@ from rest_framework import status
 from rest_framework.test import APIClient
 from core.helpers import create_user, create_department
 from core.models import Department
-from department.serializers import (
+from personnel.serializers import (
     DepartmentSerializer,
     DepartmentDetailsSerializer)
 
 
-DEPT_URL = reverse('department:department-list')
+DEPT_URL = reverse('personnel:department-list')
 
 
 def details_url(department_id):
     """Return department details url"""
-    return reverse('department:department-detail', args=[department_id])
+    return reverse('personnel:department-detail', args=[department_id])
 
 
 class PublicDepartmentTests(TestCase):

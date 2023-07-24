@@ -1,5 +1,5 @@
 """
-Serializer for Department api's
+Serializer for Personnel Api's
 """
 from rest_framework import serializers
 from core.models import Department
