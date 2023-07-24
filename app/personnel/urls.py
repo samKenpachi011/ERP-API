@@ -1,14 +1,13 @@
-"""Url mappings for the department app"""
+"""Url mappings for the personnel app"""
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from department import views
+from personnel import views
 
-app_name = 'department'
+app_name = 'personnel'
 
 router = DefaultRouter()
-
 router.register('department', views.DepartmentViewSet,
-                basename=app_name)
+                basename='department')
 
 
 urlpatterns = [

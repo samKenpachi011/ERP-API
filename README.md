@@ -22,15 +22,7 @@
 - app/users/serializers
 - app/users/view
 - app/users/urls
-- app/users/admin
 
-
-**Personnel App Structure**
-- app/personnel/tests/
-- app/personnel/serializers
-- app/personnel/view
-- app/personnel/urls
-- app/personnel/admin
 
 1. ### User App endpoints
 
@@ -39,7 +31,24 @@
 - [Token Authentication](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication)
 - Helps avoid using email and password authentication on each request
 
+**Personnel App Structure**
+- app/personnel/tests/
+- app/personnel/serializers
+- app/personnel/view
+- app/personnel/urls
 
+
+1. ### Personnel App endpoints
+
+2. ### URLs
+- The router will automatically generate the following URL patterns for the DepartmentViewSet:
+
+   - List View: /department/ (HTTP GET)
+   - Create View: /department/ (HTTP POST)
+   - Detail View: /department/<pk>/ (HTTP GET, HTTP PUT, HTTP PATCH, HTTP DELETE)
+   - Update View: /department/<pk>/ (HTTP PUT, HTTP PATCH)
+   - Delete View: /department/<pk>/ (HTTP DELETE)
+   - The router.register() method with the basename, one can easily set up the URL patterns for the view set without having to manually define them in the urls.py file.
 
 ### Database Configuration
 - the docker compose configuration add a db service that uses the postgresql database and dev volume
