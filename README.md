@@ -24,6 +24,14 @@
 - app/users/urls
 - app/users/admin
 
+
+**Personnel App Structure**
+- app/personnel/tests/
+- app/personnel/serializers
+- app/personnel/view
+- app/personnel/urls
+- app/personnel/admin
+
 1. ### User App endpoints
 
 2. ### User App authentication
