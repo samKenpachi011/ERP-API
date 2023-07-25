@@ -2,6 +2,7 @@
 from django.test import TestCase
 from core.helpers import create_user, get_user_model
 from core import models
+from core.helpers import create_department
 
 
 class ModelTests(TestCase):
@@ -57,3 +58,29 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(str(department), department.dept_name)
+
+# Employee model test
+    def test_create_employee(self):
+        """Test creating an employee success"""
+
+        self.dept = create_department(
+            dept_name='Test department',
+            hod='Test Head of Department',
+            description='Test department description'
+        )
+
+        employee = models.Employee.objects.create(
+            first_name='John',
+            last_name='Doe',
+            date_of_birth='1990-01-01',
+            hired_date='2010-01-01',
+            identity_type='country_id',
+            highest_qualification='associates_degree',
+            postal_address='P O Box 10000',
+            department=self.dept,
+            emp_code=123
+        )
+
+        self.assertEqual(
+            str(employee),
+            f'{employee.first_name}, {employee.last_name} {employee.emp_code}')

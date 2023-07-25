@@ -7,6 +7,7 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from .managers import UserManager, DepartmentManager
+from .choices import IDENTITY_TYPES, HIGHEST_QUALIFICATIONS
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -37,3 +38,25 @@ class Department(models.Model):
 
     def __str__(self) -> str:
         return self.dept_name
+
+
+class Employee(models.Model):
+    """Employee model"""
+    first_name = models.CharField(max_length=100, blank=True)
+    last_name = models.CharField(max_length=100, blank=True)
+    date_of_birth = models.DateField(null=True, blank=True)
+    hired_date = models.DateField(null=True, blank=True)
+    identity_type = models.CharField(choices=IDENTITY_TYPES,
+                                     max_length=50, blank=True)
+    highest_qualification = models.CharField(choices=HIGHEST_QUALIFICATIONS,
+                                             max_length=50, blank=True)
+    postal_address = models.CharField(max_length=200, blank=True)
+    department = models.ForeignKey('Department',
+                                   on_delete=models.SET_NULL,
+                                   null=True, blank=True)
+    emp_code = models.PositiveIntegerField(default=1, blank=True,
+
+                                           null=True)
+
+    def __str__(self) -> str:
+        return f'{self.first_name}, {self.last_name} {self.emp_code}'

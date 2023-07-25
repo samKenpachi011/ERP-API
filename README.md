@@ -39,6 +39,8 @@
 
 
 1. ### Personnel App endpoints
+- **Department**
+- **Employee**
 
 2. ### URLs
 - The router will automatically generate the following URL patterns for the DepartmentViewSet:
