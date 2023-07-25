@@ -49,8 +49,7 @@ class Employee(models.Model):
     identity_type = models.CharField(choices=IDENTITY_TYPES,
                                      max_length=50, blank=True)
     highest_qualification = models.CharField(choices=HIGHEST_QUALIFICATIONS,
-                                             max_length=50,
-                                             blank=True)
+                                             max_length=50, blank=True)
     postal_address = models.CharField(max_length=200, blank=True)
     department = models.ForeignKey('Department',
                                    on_delete=models.SET_NULL,
