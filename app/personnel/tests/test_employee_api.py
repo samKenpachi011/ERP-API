@@ -52,6 +52,7 @@ class PublicEmployeeTest(TestCase):
         res = self.client.get(EMP_URL)
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
+
 class PrivateEmployeeTest(TestCase):
     """Tests for authenticated users"""
 
@@ -142,11 +143,6 @@ class PrivateEmployeeTest(TestCase):
             hod='Test update',
             description='Test description update'
         )
-        dept2 = create_department(
-            dept_name='department update',
-            hod='Test update',
-            description='Test description update'
-        )
 
         defaults = {
             'first_name': 'Test Update',
@@ -166,7 +162,6 @@ class PrivateEmployeeTest(TestCase):
             'first_name': 'Test Frank',
             'emp_code': 321
         }
-
 
         res = self.client.patch(url, payload)
         self.assertEqual(res.status_code, status.HTTP_200_OK)

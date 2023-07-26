@@ -29,13 +29,13 @@ class DepartmentViewSet(viewsets.ModelViewSet):
         """Create a new department"""
         return serializer.save()
 
+
 class EmployeeViewSet(viewsets.ModelViewSet):
     """View for managing employee information"""
     serializer_class = serializers.EmployeeDetailsSerializer
     queryset = Employee.objects.all()
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-
 
     def get_queryset(self):
         """Retrieve employee objects for authenticated users"""
