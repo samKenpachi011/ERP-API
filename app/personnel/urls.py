@@ -8,6 +8,8 @@ app_name = 'personnel'
 router = DefaultRouter()
 router.register('department', views.DepartmentViewSet,
                 basename='department')
+router.register('employee', views.EmployeeViewSet,
+                basename='employee')
 
 
 urlpatterns = [
