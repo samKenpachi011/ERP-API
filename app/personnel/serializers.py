@@ -38,13 +38,28 @@ class DepartmentDetailsSerializer(DepartmentSerializer):
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
+    """Serializer for employee model"""
 
     class Meta:
         model = Employee
         fields = ['id', 'first_name', 'emp_code']
-        read_only_fields = ['id','emp_code']
+        read_only_fields = ['id']
 
     def create(self, validated_data):
         """Create a new employee"""
         emp = Employee.objects.create(**validated_data)
         return emp
+
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+
+        instance.save()
+        return instance
+
+
+class EmployeeDetailsSerializer(EmployeeSerializer):
+    """Serializer for employee details view"""
+
+    class Meta(EmployeeSerializer.Meta):
+        fields = EmployeeSerializer.Meta.fields + ['hired_date', 'emp_code']

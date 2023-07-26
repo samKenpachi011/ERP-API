@@ -55,7 +55,6 @@ class Employee(models.Model):
                                    on_delete=models.SET_NULL,
                                    null=True, blank=True)
     emp_code = models.PositiveIntegerField(default=1, blank=True,
-
                                            null=True)
 
     def __str__(self) -> str:
